@@ -31,3 +31,7 @@ function welcomePeople(x: string[] | string) {
         console.log('Welcome lone traveler ' + x);
     }
 }
+
+function getFirstThree(x: number[] | string) {
+    return x.slice(0, 3);
+}
