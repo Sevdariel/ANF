@@ -11,11 +11,7 @@ Boolean("hello");
 !!"word";
 
 function printAllDifferentAttempt(strs: string | string[] | null) {
-    // !!!!!!!!!!!!!!!!!!
-    // DON'T DO THIS!
-    //  KEEP READING
-    // !!!!!!!!!!!!!!!!!!
-    if (strs) {
+    if (strs !== null) {
         if (typeof strs === "object") {
           for (const s of strs) {
             console.log(s);
