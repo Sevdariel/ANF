@@ -22,3 +22,11 @@ function multiplyValue(container: Container, factor: number) {
         container.value *= factor;
     }
 }
+
+function logValue(x: Date | string) {
+    if (x instanceof Date) {
+        console.log(x.toUTCString());
+    } else {
+        console.log(x.toUpperCase());
+    }
+}
