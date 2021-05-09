@@ -15,3 +15,20 @@ function map<Input, Output>(arr: Input[], func: (arg: Input) => Output): Output[
 // Parameter 'n' is of type 'string'
 // 'parsed' is of type 'number[]'
 const parsed = map(["1", "2", "3"], (n) => parseInt(n));
+
+// Constraints
+function longest<Type extends { length: number }>(a: Type, b: Type) {
+    if (a.length >= b.length) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+// longerArray is of type 'number[]'
+const longerArray = longest([1, 2], [1, 2, 3]);
+// longerString is of type 'string'
+const longerString = longest("alice", "bob");
+// Error! Numbers don't have 'length' property
+// Argument of type 'number' is not assignable to parameter of type '{ length: number; }'.
+// const notOK = longest(10, 100);
