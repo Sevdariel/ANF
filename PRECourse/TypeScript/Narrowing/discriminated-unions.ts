@@ -30,6 +30,10 @@ function getAreaWithSwitch(shape: Shape) {
             return Math.PI * shape.radius ** 2;
         case "square":
             return shape.sideLength ** 2;
+        // default:
+        //     Type 'Triangle' is not assignable to type 'never'.
+        //     const exhaustiveCheck: never = shape;
+        //     return exhaustiveCheck;
     }
 }
 
@@ -43,4 +47,9 @@ interface Square {
     sideLength: number;
 }
 
-type Shape = Circle | Square;
+interface Triangle {
+    kind: "triangle";
+    sideLength: number;
+}
+
+type Shape = Circle | Square | Triangle;
