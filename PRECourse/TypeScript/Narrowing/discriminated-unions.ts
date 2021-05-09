@@ -1,8 +1,8 @@
-interface Shape {
-    kind: "circle" | "square";
-    radius?: number;
-    sideLength?: number;
-}
+// interface Shape {
+//     kind: "circle" | "square";
+//     radius?: number;
+//     sideLength?: number;
+// }
 
 function handleShape(shape: Shape) {
     // oops!
@@ -13,7 +13,34 @@ function handleShape(shape: Shape) {
 }
 
 function getArea(shape: Shape) {
+    //if (shape.kind === "circle") {
+    // Property 'radius' does not exist on type 'Shape'.
+    // Property 'radius' does not exist on type 'Square'.
+    //return Math.PI * shape.radius! ** 2;
+    //}
+
     if (shape.kind === "circle") {
-        return Math.PI * shape.radius! ** 2;
+        return Math.PI * shape.radius ** 2;
     }
 }
+
+function getAreaWithSwitch(shape: Shape) {
+    switch (shape.kind) {
+        case "circle":
+            return Math.PI * shape.radius ** 2;
+        case "square":
+            return shape.sideLength ** 2;
+    }
+}
+
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+
+interface Square {
+    kind: "square";
+    sideLength: number;
+}
+
+type Shape = Circle | Square;
