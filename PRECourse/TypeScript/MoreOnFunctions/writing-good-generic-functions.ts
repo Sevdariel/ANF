@@ -20,3 +20,14 @@ function filter1<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
 function filter2<Type, Func extends (arg: Type) => boolean>(arr: Type[], func: Func): Type[] {
     return arr.filter(func);
 }
+
+// type parameters hould appear twice
+function greet<Str extends string>(s: Str) {
+    console.log("Hello, " + s);
+}
+
+function greetGood(s: string) {
+    console.log("Hello, " + s);
+}
+
+greet("world");
