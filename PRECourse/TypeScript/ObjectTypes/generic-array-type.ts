@@ -1,9 +1,9 @@
-function doSomething(value: Array<string>) {
+function doSomethingArray(value: Array<string>) {
     // ...
 }
 
 let array: string[] = ["hello", "world"];
 // either of these work!
-doSomething(array);
-doSomething(new Array("hello", "world"));
+doSomethingArray(array);
+doSomethingArray(new Array("hello", "world"));
 
