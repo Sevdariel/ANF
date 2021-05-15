@@ -52,3 +52,18 @@ function readButtonInput(...args: [string, number, ...boolean[]]) {
 // function readButtonInput(name: string, version: number, ...input: boolean[]) {
 //     // ...
 //   }
+
+function readonlyDoSomething(pair: readonly [string, number]) {
+    // pair[0] = "hello";
+    // Cannot assign to '0' because it is a read-only property.
+}
+
+let point = [3, 4] as const;
+
+function distanceFromOrigin([x, y]: [number, number]) {
+    return Math.sqrt(x ** 2 + y ** 2);
+}
+
+//distanceFromOrigin(point);
+// Argument of type 'readonly [3, 4]' is not assignable to parameter of type '[number, number]'.
+//   The type 'readonly [3, 4]' is 'readonly' and cannot be assigned to the mutable type '[number, number]'.
