@@ -17,5 +17,5 @@ type P = ReturnType<typeof f>;
 
 declare const msgbox: () => boolean;
 // Meant to use = ReturnType<typeof msgbox>
-let shouldContinue: typeof msgbox("Are you sure you want to continue?");
+// let shouldContinue: typeof msgbox("Are you sure you want to continue?");
 // ',' expected.
