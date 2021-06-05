@@ -11,7 +11,8 @@ person.on("firstNameChanged", (newValue) => {
 })
 
 type PropEventSource<Type> = {
-    on(eventName: `${string & keyof Type}Changed`, callback: (newValue: any) => void): void;
+    on<Key extends string & keyof Type>
+        (eventName: `${Key}Changed`, callback: (newValue: Type[Key]) => void): void;
 };
 
 // Create a "watched object" with an 'on' method
@@ -26,3 +27,13 @@ person.on("firstNameChanged", () => { });
 
 // person.on("frstNameChanged", () => {});
 // Argument of type '"frstNameChanged"' is not assignable to parameter of type '"firstNameChanged" | "lastNameChanged" | "ageChanged"'.
+
+person.on("firstNameChanged", newName => {
+    console.log(`new name is ${newName.toUpperCase()}`);
+});
+
+person.on("ageChanged", newAge => {
+    if (newAge < 0) {;
+        console.warn("warning! negative age");
+    }
+})
