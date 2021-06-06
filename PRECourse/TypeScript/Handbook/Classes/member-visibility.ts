@@ -60,3 +60,11 @@ const bMV = new BaseMV();
 // Can't access from outside the class
 // console.log(b.x);
 // Property 'x' is private and only accessible within class 'Base'.
+
+class AMV {
+    private x = 10;
+    public sameAs(other: AMV) {
+        // No error
+        return other.x === this.x;
+    }
+}
