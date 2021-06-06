@@ -107,3 +107,11 @@ class C {
         // Type 'string' is not assignable to type 'number'.
     }
 }
+
+class MyClass {
+    [s: string]: boolean | ((s: string) => boolean);
+
+    check(s: string) {
+        return this[s] as boolean;
+    }
+}
