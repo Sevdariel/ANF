@@ -8,11 +8,24 @@
 // pt.y = 0;
 
 class Point {
-    x = 0;
-    y = 0;
+    x: number;
+    y: number;
+
+    // Normal signature with defaults
+    // constructor(x = 0, y = 0) {
+    //     this.x = x;
+    //     this.y = y;
+    // }
+
+    // Overloads
+    constructor(x: number, y: string);
+    constructor(s: string);
+    constructor(xs: any, y?: any) {
+        // TBD
+    }
 }
 
-const pt = new Point();
+const pt = new Point(0, "0");
 // Prints 0, 0
 console.log(`${pt.x}, ${pt.y}`);
 
