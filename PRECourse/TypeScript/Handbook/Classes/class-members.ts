@@ -93,6 +93,13 @@ let x: number = 0;
 
 class C {
     x: string = "hello";
+    _length = 0;
+    get length() {
+        return this._length;
+    }
+    set length(value) {
+        this._length = value;
+    }
 
     m() {
         // This is trying to modify  'x' from line 1, not the class property
