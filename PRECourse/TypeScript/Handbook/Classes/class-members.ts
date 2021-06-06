@@ -8,9 +8,13 @@
 // pt.y = 0;
 
 class Point {
-    x: number;
-    y: number;
+    x = 10;
+    y = 10;
 
+    scale(n: number): void {
+        this.x *= n;
+        this.y *= n;
+    }
     // Normal signature with defaults
     // constructor(x = 0, y = 0) {
     //     this.x = x;
@@ -82,5 +86,17 @@ class Derived extends Base {
         // console.log(this.k);
         // 'super' must be called before accessing 'this' in the constructor of a derived class.
         super();
+    }
+}
+
+let x: number = 0;
+
+class C {
+    x: string = "hello";
+
+    m() {
+        // This is trying to modify  'x' from line 1, not the class property
+        // x = "world";
+        // Type 'string' is not assignable to type 'number'.
     }
 }
