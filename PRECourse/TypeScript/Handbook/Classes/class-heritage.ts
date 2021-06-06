@@ -94,3 +94,17 @@ class DerivedError extends BaseOverride {
     //         console.log(`Hello, ${name.toUpperCase()}`);
     //     }
 }
+
+class BaseIO {
+    name = "base";
+    constructor() {
+        console.log("My name is " + this.name);
+    }
+}
+
+class DerivedIO extends BaseIO {
+    name = "derived"; 
+}
+
+// Prints "base", not "derived"
+const dio = new DerivedIO();
