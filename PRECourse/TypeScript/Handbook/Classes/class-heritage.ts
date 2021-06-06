@@ -108,3 +108,16 @@ class DerivedIO extends BaseIO {
 
 // Prints "base", not "derived"
 const dio = new DerivedIO();
+
+class MsgError extends Error {
+    constructor(m: string) {
+        super(m);
+
+        // Set the prototype explicitly.
+        Object.setPrototypeOf(this, MsgError.prototype);
+    }
+
+    sayHello() {
+        return "hello " + this.message;
+    }
+}
