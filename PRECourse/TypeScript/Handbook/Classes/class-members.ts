@@ -71,3 +71,16 @@ class Greeter {
 const g = new Greeter();
 // g.name = "also not ok";
 // Cannot assign to 'name' because it is a read-only property.
+
+class Base {
+    k = 4;
+}
+
+class Derived extends Base {
+    constructor() {
+        // Prints a wrong value in ES5; throws exception in ES6
+        // console.log(this.k);
+        // 'super' must be called before accessing 'this' in the constructor of a derived class.
+        super();
+    }
+}
