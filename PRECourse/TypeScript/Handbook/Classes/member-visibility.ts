@@ -25,11 +25,23 @@ spGMV.greet(); // OK
 
 class BaseMV {
     protected m = 10;
+    protected x: number = 1;
 }
 
 class DerivedMV extends BaseMV {
     // No modifier, so default is 'public'
     m = 15;
+    protected x: number = 5;
+}
+
+class Derived1MV extends BaseMV {
+    f1(other: Derived1MV) {
+        other.x = 10;
+    }
+    f2(other: BaseMV) {
+        // other.x = 10;
+        // Property 'x' is protected and only accessible through an instance of class 'Derived2'. This is an instance of class 'Base'.
+    }
 }
 
 const dMV = new DerivedMV();
