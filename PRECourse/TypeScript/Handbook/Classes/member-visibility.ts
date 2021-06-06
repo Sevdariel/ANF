@@ -26,12 +26,21 @@ spGMV.greet(); // OK
 class BaseMV {
     protected m = 10;
     protected x: number = 1;
+    private xPrivate = 0;
 }
 
 class DerivedMV extends BaseMV {
     // No modifier, so default is 'public'
     m = 15;
     protected x: number = 5;
+    // xPrivate = 1;
+//     Class 'Derived' incorrectly extends base class 'Base'.
+//   Property 'x' is private in type 'Base' but not in type 'Derived'.
+    showX() {
+        // Can't access in subclasses
+        // console.log(this.xPrivate);
+        // Property 'x' is private and only accessible within class 'Base'.
+    }
 }
 
 class Derived1MV extends BaseMV {
@@ -46,3 +55,8 @@ class Derived1MV extends BaseMV {
 
 const dMV = new DerivedMV();
 console.log(dMV.m);
+
+const bMV = new BaseMV();
+// Can't access from outside the class
+// console.log(b.x);
+// Property 'x' is private and only accessible within class 'Base'.
