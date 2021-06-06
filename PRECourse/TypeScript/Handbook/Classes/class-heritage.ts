@@ -60,3 +60,37 @@ const d = new Dog();
 d.move();
 // Derived class method
 d.woof(3);
+
+class BaseOverride {
+    greet() {
+        console.log("Hello, world!");
+    }
+}
+
+class DerivedOverride extends BaseOverride {
+    greet(name?: string) {
+        if (name === undefined) {
+            super.greet();
+        } else {
+            console.log(`Hello, ${name.toUpperCase()}`);
+        }
+    }
+}
+
+const derived = new DerivedOverride();
+derived.greet();
+derived.greet("reader");
+
+// Alias the derived instance through a base class reference
+const bo: BaseOverride = derived;
+// No problem
+bo.greet();
+
+class DerivedError extends BaseOverride {
+    //     // Make this parameter required
+    //     greet(name: string) {
+    // //         Property 'greet' in type 'Derived' is not assignable to the same property in base type 'Base'.
+    // //   Type '(name: string) => void' is not assignable to type '() => void'.
+    //         console.log(`Hello, ${name.toUpperCase()}`);
+    //     }
+}
