@@ -25,6 +25,17 @@ const personTuple: {
   role: [2, 'author']
 };
 
+enum Role {
+  ADMIN, READ_ONLY, AUTHOR
+};
+
+const personEnum = {
+  name: 'Maximilian',
+  age: 30,
+  hobbies: ['Sports', 'Cooking'],
+  role: Role.ADMIN,
+};
+
 // person.role.push('admin');
 // person.role[1] = 10;
 // person.role = [0, 'admin', 'user'];
@@ -42,3 +53,6 @@ for (const hobby of person.hobbies) {
   // console.log(hobby.map());
 }
 
+if (personEnum.role === Role.AUTHOR) {
+  console.log('is author');
+}
