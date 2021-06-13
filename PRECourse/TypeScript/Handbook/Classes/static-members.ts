@@ -23,3 +23,8 @@ class Base {
 class Derived extends Base {
     myGreeting = Derived.getGreeting();
 }
+
+class S {
+    // static name = "S!";
+    // Static property 'name' conflicts with built-in property 'Function.name' of constructor function 'S'.
+}
