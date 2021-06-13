@@ -33,3 +33,33 @@ function fn(this: SomeType, x: number) {
     /* ... */
 // }
 
+class Box {
+    contents: string = "";
+    set(value: string) {
+        this.contents = value;
+        return this;
+    }
+
+    sameAs(other: this) {
+        return other.contents === this.contents;
+    }
+}
+
+class ClearableBox extends Box {
+    clear() {
+        this.contents = "";
+    }
+}
+
+const a = new ClearableBox();
+const b = a.set("hello");
+
+class DerivedBox extends Box {
+    otherContent: string = "?";
+}
+
+const base = new Box();
+const derived = new DerivedBox();
+derived.sameAs(base);
+// Argument of type 'Box' is not assignable to parameter of type 'DerivedBox'.
+//   Property 'otherContent' is missing in type 'Box' but required in type 'DerivedBox'.
