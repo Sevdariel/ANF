@@ -60,6 +60,61 @@ class DerivedBox extends Box {
 
 const base = new Box();
 const derived = new DerivedBox();
-derived.sameAs(base);
+// derived.sameAs(base);
 // Argument of type 'Box' is not assignable to parameter of type 'DerivedBox'.
 //   Property 'otherContent' is missing in type 'Box' but required in type 'DerivedBox'.
+
+class FileSystemObject {
+    isFile(): this is FileRep {
+        return this instanceof FileRep;
+    }
+
+    isDirectory(): this is Directory {
+        return this instanceof Directory;
+    }
+
+    isNetworked(): this is Networked & this {
+        return this.networked;
+    }
+    constructor(public path: string, private networked: boolean) { }
+}
+
+class FileRep extends FileSystemObject {
+    constructor(path: string, public content: string) {
+        super(path, false);
+    }
+}
+
+class Directory extends FileSystemObject {
+    children: FileSystemObject[];
+}
+
+interface Networked {
+    host: string;
+}
+
+const fso: FileSystemObject = new FileRep("foo/bar.txt", "foo");
+
+if (fso.isFile()) {
+    fso.content;
+} else if (fso.isDirectory()) {
+    fso.children;
+} else if (fso.isNetworked()) {
+    fso.host;
+}
+
+class BoxTyped<T> {
+    value?: T;
+
+    hasValue(): this is { value: T } {
+        return this.value !== undefined;
+    }
+}
+
+const box = new BoxTyped();
+box.value = "Gameboy";
+
+box.value;
+if (box.hasValue()) {
+    box.value;
+}
