@@ -37,7 +37,7 @@ class C1 implements A {
     x = 0;
 }
 
-const c = new C();
+const c = new C1();
 // c.y = 10;
 // Property 'y' does not exist on type 'C'.
 

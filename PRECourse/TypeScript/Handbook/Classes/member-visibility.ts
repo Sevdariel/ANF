@@ -68,3 +68,12 @@ class AMV {
         return other.x === this.x;
     }
 }
+
+class MySafe {
+    private secrestKey = 12345;
+}
+
+// In a JavaScript file...
+// const s = new MySafe();
+// Will print 12345
+// console.log(s.secretKey);
