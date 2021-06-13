@@ -28,3 +28,16 @@ class S {
     // static name = "S!";
     // Static property 'name' conflicts with built-in property 'Function.name' of constructor function 'S'.
 }
+
+// Unnecessary "static" class
+class MyStaticClass {
+    static doSomething() {}
+}
+
+// Preferred (alternative 1)
+function doSomething() { }
+
+// Preferred (alternative 2)
+const MyHelperObject = {
+    doSomething() { },
+};
