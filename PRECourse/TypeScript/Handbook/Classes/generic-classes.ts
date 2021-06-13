@@ -6,3 +6,8 @@ class Box<Type> {
 }
 
 const b = new Box("hello!");
+
+// class Box<Type> {
+    // static defaultValue: Type;
+    // Static members cannot reference class type parameters.
+// }
