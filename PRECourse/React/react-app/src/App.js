@@ -6,7 +6,7 @@ class App extends React.Component {
     super();
     this.state = {
       txt: "this is the state txt",
-      cat: 0
+      cat: 0,
     };
   }
 
@@ -18,22 +18,17 @@ class App extends React.Component {
     let txt = this.props.txt;
     return (
       <div>
-        <input type="text" onChange={this.update.bind(this)} />
-        <h1>{this.state.txt} - {this.state.cat}</h1>
+        <h1>
+          {this.state.txt} - {this.state.cat}
+        </h1>
+        <Widget update={this.update.bind(this)} />
       </div>
     );
   }
 }
 
-// export const StatelessApp = () => <h1>Hello stateless</h1>
-
-App.propTypes = {
-  txt: PropTypes.string,
-  cat: PropTypes.number.isRequired,
-};
-
-App.defaultProps = {
-  txt: "this is the default txt",
-};
+const Widget = (props) => (
+  <input type="text" onChange={props.update} />
+);
 
 export default App;
