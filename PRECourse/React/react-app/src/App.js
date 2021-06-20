@@ -1,36 +1,37 @@
 import React from "react";
-import PropTypes from "prop-types";
+import ReactDOM from "react-dom";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentEvent: "---",
+      a: "",
     };
-    this.update = this.update.bind(this);
+    this.textInputA = React.createRef();
+    this.textInputB = React.createRef();
+    this.textInput = React.createRef();
   }
 
   update(e) {
-    this.setState({ currentEvent: e.type });
+    this.setState({ a: this.textInputA.current.value });
+    // findDOMNode is deprecated
+    // this.setState({ b: ReactDOM.findDOMNode(this.b).value });
+    this.setState({ b: this.textInput.current.value });
   }
   render() {
     return (
       <div>
-        <textarea cols="30" rows="10"
-          onKeyPress={this.update}
-          onCopy={this.update}
-          onCut={this.update}
-          onPaste={this.update}
-          onFocus={this.update}
-          onBlur={this.update}
-          onDoubleClick={this.update}
-          onTouchStart={this.update}
-          onTouchMove={this.update}
-          onTouchEnd={this.update}
-        />
-        <h1>{this.state.currentEvent}</h1>
+        <input ref={this.textInputA} type="text" onChange={this.update.bind(this)} /> {this.state.a}
+        <hr/>
+        <Input ref={this.textInput} update={this.update.bind(this)} /> {this.state.b}
       </div>
     );
+  }
+}
+
+class Input extends React.Component {
+  render() {
+    return <input ref={this.textInput} type="text" onChange={this.props.update}/>
   }
 }
 export default App;
