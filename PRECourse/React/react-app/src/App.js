@@ -5,33 +5,50 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      a: "",
+      val: 0,
     };
-    this.textInputA = React.createRef();
-    this.textInputB = React.createRef();
-    this.textInput = React.createRef();
+    this.update = this.update.bind(this);
   }
 
-  update(e) {
-    this.setState({ a: this.textInputA.current.value });
-    // findDOMNode is deprecated
-    // this.setState({ b: ReactDOM.findDOMNode(this.b).value });
-    this.setState({ b: this.textInput.current.value });
+  update() {
+    this.setState({ val: this.state.val + 1 });
+  }
+
+  componentWillMount() {
+    console.log("componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+  }
+
+  render() {
+    console.log("render");
+    return <button onClick={this.update}>{this.state.val}</button>;
+  }
+}
+
+class Wrapper extends React.Component {
+  mount() {
+    ReactDOM.render(<App />, document.getElementById("a"));
+  }
+
+  unmount() {
+    ReactDOM.unmountComponentAtNode(document.getElementById("a"));
   }
   render() {
     return (
       <div>
-        <input ref={this.textInputA} type="text" onChange={this.update.bind(this)} /> {this.state.a}
-        <hr/>
-        <Input ref={this.textInput} update={this.update.bind(this)} /> {this.state.b}
+        <button onClick={this.mount.bind(this)}>Mount</button>
+        <button onClick={this.unmount.bind(this)}>UnMount</button>
+        <div id="a"></div>
       </div>
     );
   }
 }
 
-class Input extends React.Component {
-  render() {
-    return <input ref={this.textInput} type="text" onChange={this.props.update}/>
-  }
-}
-export default App;
+export default Wrapper;
